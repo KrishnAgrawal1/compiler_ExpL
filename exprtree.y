@@ -95,8 +95,11 @@
 
 program : TypeDefBlock GDeclarations FDefBlock MainBlock {exit(1);}
         | TypeDefBlock GDeclarations MainBlock           {exit(1);}
-        | MainBlock                         			 {exit(1);} 
-		| TypeDefBlock                      			 {exit(1);}
+        | GDeclarations FDefBlock MainBlock              {exit(1);}
+        | GDeclarations MainBlock                        {exit(1);}
+        | FDefBlock MainBlock                  			 {exit(1);} 
+        | TypeDefBlock MainBlock               			 {exit(1);} 
+        | MainBlock                            			 {exit(1);} 
 		;
 
 TypeDefBlock  : TYPE TypeDefList ENDTYPE   { createTypeTable($2); $$ = TypeT;}

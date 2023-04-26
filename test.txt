@@ -10,12 +10,27 @@ endtype
 
 decl
     List head;
+    int pri(List t);
 enddecl
 
+int pri(List t)
+{
+  decl
+    int tt;
+    List m;
+  enddecl
+  begin
+    if(t.next != null) then
+    tt = pri(t.next);
+    endif;
+    write(t.data);
+    return 0;
+  end
+}
 int main()
 {
   decl
-    int length, x;
+    int length, x, y;
     List p, q;
   enddecl
 
@@ -44,11 +59,9 @@ int main()
     endwhile;
 
     p=head;
-    while(p!=null)  do
-      write(p.data);
-      p=p.next;
-    endwhile;
-
+    write(" ");
+    y = pri(p);
+    
     return 1;
   end
 }
