@@ -1,0 +1,6 @@
+begin
+b=3;
+do
+read(a);
+while(a<b);
+end

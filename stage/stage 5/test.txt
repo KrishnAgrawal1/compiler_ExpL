@@ -1,0 +1,47 @@
+decl
+ int fun(int x),a;
+enddecl
+
+int fun(int x)
+{
+ begin
+  if(x >= 91) then
+   a = 91;
+  else
+   a = fun(fun(x+11)) ;
+  endif;
+
+  return a;
+ end
+}
+
+int main()
+{
+ decl
+  int i,j,b,c;
+ enddecl
+
+ begin
+  i=0;
+  j=0;
+  while(i<10) do
+    i = i+1;
+    write("i=");
+    write(i);  
+    while(j<10) do
+       j = j+1;
+       write("j=");
+       write(j);
+       if(j==5) then
+        break;  
+       endif;
+    endwhile;
+    if(i==4) then 
+        break;  
+    endif;  
+  endwhile;
+
+  return 0;
+ end
+}
+
