@@ -43,6 +43,11 @@ void FInstall(struct Typetable* temp, struct tnode* tn)
 {
     if(tn == NULL) return;
     FInstall(temp,tn->left);
+    if(findField(temp,tn->varname) != NULL)
+    {
+        printf("type define has two fieldtype of same name\n");
+        exit(0);
+    }
     struct Fieldlist *f = (struct Fieldlist*)malloc(sizeof(struct Fieldlist));
     f->name = malloc(sizeof(char)*256);
     strcpy(f->name,tn->varname);
@@ -103,6 +108,16 @@ struct Typetable* createTypeTable(struct tnode* temp)
     struct tnode* t = temp;
     while(t != NULL)
     {
+        struct Typetable* tche = TypeT;
+        while(tche != NULL)
+        {
+            if(strcmp(tche->name,t->varname)==0)
+            {
+                printf("two type of same name\n");
+                exit(0);
+            }
+            tche = tche->next;
+        }
         struct Typetable* t2 = (struct Typetable*)malloc(sizeof(struct Typetable));
         t2->name = malloc(sizeof(char)*256);
         strcpy(t2->name,t->varname);

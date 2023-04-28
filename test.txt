@@ -6,6 +6,11 @@ type
     int data;
     List next;
   }
+  List
+  {
+    int da;
+    List ne;
+  }
 endtype
 
 decl
